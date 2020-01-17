@@ -1,0 +1,282 @@
+input:focus, button:focus, video:focus {
+  outline: none;
+}
+body {
+  font-size: 14px;
+  width: 100%;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+.flex_row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.flex_col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.gray_font {
+  color: #6d6d6d !important;
+}
+.align_base {
+  align-self: baseline;
+}
+svg {
+  width: 24px;
+  height: 24px;
+}
+#header {
+  width: 100%;
+  height: 56px;
+  padding: 0 14px;
+  position: fixed;
+  background-color: #ffffff;
+  z-index: 15;
+}
+#logo {
+  height: 24px;
+  width: 100px;
+}
+.search_input {
+  width: 100%;
+  height: 24px;
+  font-size: 16px;
+  padding-left: 5px;
+}
+.search_btn {
+  width: 65px;
+  height: 30px;
+}
+.search_form {
+  width: 100%;
+  max-width: 620px;
+  margin-left: auto;
+}
+.search_box {
+  width: 100%;
+}
+.search_i {
+  
+}
+.login_btn {
+  width: 100px;
+  height: 40px;
+  justify-content: center;
+}
+.header_btns {
+  margin-left: auto;
+  margin-right: 36px;
+}
+#login {
+  border: 1px solid #065fd4;
+  border-radius: 2px;
+}
+.login_text {
+  color: #065fd4;
+  margin-left: 7px;
+}
+#nav {
+  width: 240px;
+  height: 100%;
+  position: fixed;
+  top: 55px;
+  background-color: #ffffff;
+  z-index: 10;
+}
+#main {
+  background-color: hsla(0, 0%, 97%, 0.8);
+  width: 100%;
+  padding-left: 300px;
+  padding-right: 100px;
+  padding-top: 30px;
+  position: relative;
+  top: 56px;
+  box-sizing: border-box;
+  z-index: 5;
+}
+.left {
+  justify-content: flex-start;
+}
+.nav_item {
+  width: 192px;
+  height: 40px;
+  padding: 0 24px;
+}
+.nav_item_container {
+  border-bottom: 2px solid hsla(0, 0%, 95%, 0.8);
+  padding: 12px 0;
+}
+.big_text {
+  font-size: 20px !important;
+}
+.title {
+  padding-bottom: 20px;
+  font-size: 16px;
+  color: black !important;
+}
+.grid-col-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+.big_card {
+  gap: 10px;
+  cursor: pointer;
+}
+.big_card_img {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.middle_avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 100%;
+  margin: 0 5px;
+}
+.small_avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+}
+.avatar_48 {
+	width: 48px;
+	height: 48px;
+	border-radius: 100%;
+	margin-right: 15px;
+}
+
+.big_card_bottom {
+  width: 100%;
+  height: 100%;
+  justify-content: flex-start;
+}
+.texts {
+  margin-left: 5px;
+  align-self: flex-start;
+}
+
+.detail_title {
+	font-size: 18px;
+	font-weight: 500;
+	padding: 15px 0;
+}
+
+.detail_bottom {
+	justify-content: start;
+}
+
+.point {
+	margin: 0 5px;
+}
+
+.video_container {
+	border-bottom: 1px solid #aaaaaa5e;
+	padding: 15px 0;
+}
+
+.font_13 {
+	font-size: 13px;
+}
+
+.content_user {
+	justify-content: start;
+	margin-bottom: 15px;
+}
+
+.content_container {
+	padding: 15px 0;
+	border-bottom: 1px solid #aaaaaa5e;
+}
+
+.subscribe_btn {
+	width: 75px;
+	height: 40px;
+	margin-left: auto;
+	border: none;
+	background-color: #cc0000;
+	color: white;
+}
+
+.present_video {
+	width: 100%;
+}
+
+.detail_container {
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+}
+.nav_text {
+  height: 20px;
+}
+.nav_item_container img,
+.nav_item_container svg {
+  margin-right: 25px;
+}
+.nav_item:hover {
+  background-color: #aaaaaa5e;
+}
+.studio_btn {
+  margin-right: 20px;
+  cursor: pointer;
+}
+.video_wrapper {
+	width:100%;
+	height:100%;
+}
+.avatar_wrapper {
+	cursor: pointer;
+}
+#myAccount {
+  position: absolute;
+  display: none;
+  align-items: flex-start;
+  top: 9px;
+  right: 100px;
+  width: 300px;
+
+  border: 1px solid #aaaaaa5e;
+  background-color: white;
+}
+.my_info {
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid #aaaaaa5e;
+  justify-content: start;
+  align-items: flex-start;
+  line-height: 20px;
+  box-sizing: border-box;
+}
+.infos {
+  align-items: flex-start;
+  margin-left: 10px;
+}
+.avatar_link {
+  color: #065fd4;
+}
+.setting {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.info_set {
+  width: inherit;
+  box-sizing: inherit;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.info_set:hover {
+  background-color: #aaaaaa5e;
+}
+
+.info_svg {
+  width: 30px;
+  margin-right: 10px;
+}
+

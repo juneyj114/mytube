@@ -1,0 +1,271 @@
+body {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        font-size: 15px;
+        color: rgba(128, 128, 128, 0.8);
+      }
+      button {
+        border: none;
+      }
+      input {
+        font-size: 15px;
+      }
+      input:focus {
+        outline: none;
+      }
+      #header {
+        width: 100%;
+        height: 52px;
+        padding: 0 20px;
+        box-shadow: 0px 1px 4px 1px rgba(221, 221, 221, 0.8);
+        box-sizing: border-box;
+        z-index: 15;
+        position: fixed;
+      }
+      .flex_row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+      .flex_col {
+        display: flex;
+        flex-direction: column;
+      }
+      .small_icon {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+      }
+      .studio_logo {
+        width: 100px;
+        height: 24px;
+        margin-left: 20px;
+      }
+      .input_box {
+        width: 100%;
+        max-width: 620px;
+        height: 35px;
+        margin-left: auto;
+        border: 1px solid #aaaaaa96;
+        border-radius: 5px;
+      }
+      .input {
+        width: 100%;
+        border: none;
+      }
+      .glass {
+        margin: 0 15px;
+      }
+      #upload {
+        width: 100px;
+        height: 36px;
+        border: 1px solid #aaaaaa62;
+        margin-right: 20px;
+        cursor: pointer;
+      }
+      .middle_avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 100%;
+        margin: 0 5px;
+      }
+      .big_avatar {
+        width: 112px;
+        height: 112px;
+        border-radius: 100%;
+      }
+      .header_btns {
+        margin-left: auto;
+        margin-right: 5px;
+      }
+      #nav {
+        width: 240px;
+        height: 100%;
+        position: fixed;
+        top: 55px;
+        border-right: 1px solid #aaaaaa5e;
+        background-color: #ffffff;
+        z-index: 10;
+      }
+      .nav_item {
+        width: 192px;
+        height: 40px;
+        padding: 0 24px;
+      }
+      .nav_item_container {
+        border-bottom: 2px solid hsla(0, 0%, 95%, 0.9);
+        padding: 12px 0;
+      }
+      .left {
+        justify-content: flex-start;
+      }
+      nav img {
+        width: 50px;
+        height: 24px;
+      }
+      .align_self_center {
+        align-self: center;
+      }
+      #nav_avatar {
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+      .upload_text {
+        margin-left: 5px;
+      }
+      .big_text {
+        font-size: 25px !important;
+        font-weight: 500;
+        color: black;
+        margin-bottom: 20px;
+      }
+      #main {
+        width: 100%;
+        padding-left: 280px;
+        padding-right: 100px;
+        padding-top: 20px;
+        position: relative;
+        top: 56px;
+        box-sizing: border-box;
+        z-index: 5;
+        font-size: 12px;
+      }
+      .grid-7-col {
+        display: grid;
+        grid-template-columns: 1.5fr 20fr 10fr 5fr 5fr 10fr 10fr;
+      }
+      .just_self_end {
+        justify-self: flex-end;
+      }
+      .contents_container {
+        color: black;
+        padding: 10px 0;
+        border-top: 1px solid #aaaaaa5e;
+      }
+      .contents_container:hover {
+        background-color: #aaaaaa5e;
+      }
+      .content {
+        color: rgba(128, 128, 128, 0.8);
+      }
+      .title {
+        font-size: 13px;
+      }
+      .preview_img {
+        width: 120px;
+        height: 65px;
+        margin-right: 15px;
+      }
+      .preview_container {
+        align-items: end !important;
+        justify-content: start !important;
+      }
+      .explain {
+        padding: 10px 0;
+        border-top: 1px solid #aaaaaa5e;
+      }
+      #paging {
+        border-top: 1px solid #aaaaaa5e;
+        border-bottom: 1px solid #aaaaaa5e;
+        padding: 15px 0;
+      }
+      .upload {
+        display: none;
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 100;
+      }
+      .upload_popup {
+        width: 700px;
+        height: 90%;
+        background-color: white;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0 auto;
+        border-radius: 10px;
+      }
+      .upload_head {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-size: 20px;
+        color: #212121;
+        padding: 0 24px;
+        height: 64px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+      }
+      .right {
+        margin-left: auto;
+      }
+      .upload_file {
+        height: inherit;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      #file {
+        display: none;
+      }
+      .file_label {
+        width: fit-content;
+        color: white;
+        padding: 10px 15px;
+        background-color: #065fd4;
+        cursor: pointer;
+      }
+      .relative {
+        position: relative;
+      }
+      .content_hidden {
+        position: absolute;
+        top: 20px;
+      }
+      .upload_detail {
+        height: 100%;
+        padding: 0px 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .preview_video {
+        width: 100%;
+      }
+      .detail_input {
+        padding-left: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #aaaaaa96;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+
+      .detail_title {
+        height: 30px;
+      }
+
+      .detail_content {
+        height: 150px;
+      }
+      
+      textarea {
+        resize: none;
+        padding-top: 8px;
+      }
+      .submit {
+        margin-left: auto;
+        width: fit-content;
+        color: white;
+        padding: 8px 15px;
+        background-color: #065fd4;
+        cursor: pointer;
+      }
+      .video_wrapper {
+      	width: 80%;
+      	height: 50%;
+      	margin-top: 20px;
+      }
