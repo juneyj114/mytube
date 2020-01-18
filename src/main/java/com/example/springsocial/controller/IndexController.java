@@ -18,6 +18,7 @@ import com.example.springsocial.service.LikesService;
 import com.example.springsocial.service.SubscribingService;
 import com.example.springsocial.service.UserService;
 import com.example.springsocial.service.VideoService;
+import com.example.springsocial.util.LikeStatus;
 import com.example.springsocial.util.Upload;
 
 @Controller
@@ -79,12 +80,32 @@ public class IndexController {
 		List<Subscribing> subs = subService.findAllSubscribingId(author.getId());
 		int subCount = subs.size();
 		author.setSubCount(subCount);
-		model.addAttribute("video", video);
-		
+		List<Likes> likes = likesService.findByVideoId(id);
+		int likeCount = 0;
+		int unLikeCount = 0;
+		for (Likes like : likes) {
+			if(like.isLike) {
+				likeCount ++;
+			} else {
+				unLikeCount ++;
+			}
+		}
+		video.setLikeCount(likeCount);
+		video.setUnLikeCount(unLikeCount);
 		if(userPrincipal != null) {
+			Likes like = likesService.findByVideoIdAndUserId(id, userPrincipal.getId());
+			if(like == null) {
+				video.setLike(LikeStatus.NOTHING);
+			} else if (like.isLike) {
+				video.setLike(LikeStatus.LIKE);
+			} else {
+				video.setLike(LikeStatus.UNLIKE);
+			}
 			User user = userService.findUserWithSubById(userPrincipal.getId());
 			model.addAttribute("user",user);
 		}
+		model.addAttribute("video", video);
+	
 		videoService.readCountUp(id);
 		return "detail";
 	}

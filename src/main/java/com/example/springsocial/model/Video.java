@@ -18,6 +18,7 @@ import javax.persistence.Transient;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.example.springsocial.util.LikeStatus;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -70,7 +71,15 @@ public class Video {
 	@Transient
 	public int likeCount;
 	
+	@Transient
+	public int unLikeCount;
+	
+	@Transient
+	public LikeStatus like = LikeStatus.NOTHING;
+	
 	public boolean getIsPublic() {
 		return this.isPublic;
 	}
+	
 }
+

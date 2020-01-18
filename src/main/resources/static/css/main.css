@@ -200,6 +200,7 @@ svg {
 	border: none;
 	background-color: #cc0000;
 	color: white;
+	cursor:pointer;
 }
 
 .present_video {
@@ -280,3 +281,18 @@ svg {
   margin-right: 10px;
 }
 
+.like_btns {
+	display: flex;
+	flex-directiron: row;
+	margin-left:auto;
+}
+.like_btn {
+	margin-right:20px;
+}
+.like_btn, .unlike_btn{
+	display: flex;
+	cursor: pointer;
+}
+.like_btn > img, .unlike_btn > img {
+	margin-right:10px;
+}

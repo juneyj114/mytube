@@ -26,6 +26,30 @@
 						<div>조회수 ${video.readCount}회</div>
 						<div class="point">·</div>
 						<div>${video.createDate}</div>
+						<div class="like_btns">
+							<div class="like_btn" video-id="${video.id}">
+								<c:choose>
+									<c:when test="${video.like == 'LIKE'}">
+										<img src="/img/liked.svg" class="small_avatar liked" />
+									</c:when>
+									<c:otherwise>
+										<img src="/img/like.svg" class="small_avatar" />
+									</c:otherwise>
+								</c:choose>
+								<div>${video.likeCount}</div>
+							</div>
+							<div class="unlike_btn" video-id="${video.id}">
+								<c:choose>
+									<c:when test="${video.like == 'UNLIKE'}">
+										<img src="/img/unliked.svg" class="small_avatar unliked" />
+									</c:when>
+									<c:otherwise>
+										<img src="/img/unlike.svg" class="small_avatar" />
+									</c:otherwise>
+								</c:choose>
+								<div>${video.unLikeCount}</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="content_container">
@@ -63,16 +87,6 @@
 			<div class="next_video">다음 추천 비디오가 표시될 공간입니다.</div>
 		</div>
 	</section>
-	<script>
-    const sub_btn = document.querySelector(".subscribe_btn");
-
-    const fetchSub = async () => {
-      const fetchData = await fetch("/sub/${video.author.id}", { method: "post" });
-      const status = await fetchData.text();
-      console.log(status);
-    };
-
-    sub_btn.addEventListener("click", fetchSub);
-	</script>
+	<script src="/js/detail.js"></script>
 </body>
 </html>

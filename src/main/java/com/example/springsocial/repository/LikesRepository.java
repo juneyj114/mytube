@@ -11,7 +11,9 @@ import com.example.springsocial.model.Likes;
 
 public interface LikesRepository extends JpaRepository<Likes, Long>{
 	
-	Optional<Likes> findByVideoId(Long videoId);
+	List<Likes> findByVideoId(Long videoId);
 	
 	List<Likes> findByVideoIdAndIsLikeTrue(Long videoId);
+
+	Likes findByVideoIdAndUserId(Long id, Long userId);
 }

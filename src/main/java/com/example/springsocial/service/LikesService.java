@@ -20,4 +20,30 @@ public class LikesService {
 		List<Likes> likes = likesRepository.findByVideoIdAndIsLikeTrue(videoId);
 		return likes;
 	}
+
+	@Transactional
+	public List<Likes> findByVideoId(Long id) {
+		List<Likes> likes = likesRepository.findByVideoId(id);
+		return likes;
+	}
+	
+	@Transactional
+	public void saveToggle(Likes like) {
+		Likes savedLike = likesRepository.findByVideoIdAndUserId(like.getVideo().getId(), like.getUser().getId());
+		if(savedLike != null) {
+			if(savedLike.isLike == like.isLike) {
+				likesRepository.delete(savedLike);
+			} else {
+				savedLike.setIsLike(like.isLike);
+			}
+		} else {
+			likesRepository.save(like);
+		}
+	}
+	
+	@Transactional
+	public Likes findByVideoIdAndUserId(Long id, Long userId) {
+		Likes like = likesRepository.findByVideoIdAndUserId(id, userId);
+		return like;
+	}
 }

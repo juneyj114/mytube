@@ -92,5 +92,5 @@ public class VideoController {
 		List<Video> videos = videoService.findBySearchWord(searchWord);
 		return videos;
 	}
-	
+
 }
