@@ -8,11 +8,16 @@ server:
     key-alias: bootsecurity
   servlet:
     context-path: /
+    
 spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/oauth2?serverTimezone=UTC&useSSL=false
-    username: oauth2
+    url: jdbc:mysql://localhost:3306/mytube?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false
+    username: mytube
     password: bitc5600
   jpa:
     open-in-view: false
@@ -20,7 +25,7 @@ spring:
       ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-    #show-sql: true
+#    show-sql: true
     properties:
       hibernate.format_sql: true
 
@@ -29,16 +34,21 @@ spring:
       client:
         registration:
           facebook:
-            client-id: 
-            client-secret:  
+            client-id: 2400546060259431
+            client-secret: 228f46dbbfdd948aebdf5ee8c6cf49b8
             scope:
             - email
             - public_profile
 
           google: 
-            client-id: 
-            client-secret: 
+            client-id: 73269684248-pssn027f5441bhcg9cerhaqso72qpgtt.apps.googleusercontent.com
+            client-secret: _w5bBcEzyew32Fk8lzza_3iH
             scope: 
             - email
             - profile
+  servlet:
+    multipart:
+      max-file-size: 10GB
+      max-request-size: 10GB
+        
           

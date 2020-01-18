@@ -7,7 +7,11 @@ let uploading = false;
 const makeDetailBox = () => {
   let div = ``;
   div += `	<div class="video_wrapper">`;
-  div += `		<video src="#" class="preview_video"></video>`;
+//  div += `		<video src="#" class="preview_video"></video>`;
+  div += `		<div class="progress_bar">`;
+  div += `			<div class="bar"></div>`;
+  div += `			<div class="per">0%</div>`;
+  div += `		</div>`;
   div += `	</div>`;
   div += `	<form action="video/uploadDetail" method="POST">`;
   div += `		<input type="text" name="title" class="input detail_input detail_title" placeholder="Title" maxlength="50" id="upload_title"/>`;
@@ -91,26 +95,51 @@ container.addEventListener("drop", async e => {
   e.preventDefault();
   const droppedFile = e.dataTransfer.files;
   inputFile.files = droppedFile;
-  transFile(droppedFile);
+  
   appendDetailBox();
+  transFile(droppedFile);
 });
 inputFile.addEventListener("change", e => {
   console.log(inputFile.files);
-  transFile(inputFile.files);
+  
   appendDetailBox();
+  transFile(inputFile.files);
 });
 
+//axios 아닌 fetch 사용 (progressbar X)
+//const transFile = async files => {
+//  uploading = true;
+//  const formData = new FormData();
+//  formData.append("file", files[0]);
+//  const fetchData = await fetch("/video/upload", {
+//    method: "POST",
+//    body: formData
+//  });
+//  const res = await fetchData.text();
+//  console.log(res);
+//  preview_video = document.querySelector(".preview_video");
+//  preview_video.src = res;
+//  uploading = false;
+//};
+
 const transFile = async files => {
-  uploading = true;
-  const formData = new FormData();
-  formData.append("file", files[0]);
-  const fetchData = await fetch("/video/upload", {
-    method: "POST",
-    body: formData
-  });
-  const res = await fetchData.text();
-  console.log(res);
-  preview_video = document.querySelector(".preview_video");
-  preview_video.src = res;
-  uploading = false;
-};
+	  uploading = true;
+	  const formData = new FormData();
+	  formData.append("file", files[0]);
+	  const bar = document.querySelector(".bar");
+	  const per = document.querySelector(".per");
+	  const fetchData = await axios.post("/video/upload", formData, {
+		  onUploadProgress: function(e){
+			  				const loaded = e.loaded;
+			  				const total = e.total;
+			  				const percent = parseInt(loaded / total * 100)+"%";
+			  				bar.style.width = percent;
+			  				per.innerText = percent;
+	  						}
+	  });
+	  const res = await fetchData.data;
+	  console.log(res);
+	  video_wrapper = document.querySelector(".video_wrapper");
+	  video_wrapper.innerHTML = `<video src="${res}" class="preview_video"></video>`;
+	  uploading = false;
+	};

@@ -26,9 +26,9 @@ public class WebMvcConfig implements WebMvcConfigurer{
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		WebMvcConfigurer.super.addResourceHandlers(registry);
-		
 		registry.addResourceHandler("/upload/**")
-		.addResourceLocations("file:///C:/src/instaclone/Mytube/src/main/resources/upload/")
+//		.addResourceLocations("file:///C:/src/instaclone/Mytube/src/main/resources/upload/") // 학원
+		.addResourceLocations("file:///C:/workspace-sts4/mytube/src/main/resources/upload/") // 집
 		.setCachePeriod(3600)
 		.resourceChain(true)
 		.addResolver(new PathResourceResolver());

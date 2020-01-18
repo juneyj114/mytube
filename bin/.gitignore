@@ -12,6 +12,8 @@ target/
 .settings
 .springBeans
 .sts4-cache
+target/
+src/main/resources/upload/
 
 ### IntelliJ IDEA ###
 .idea
