@@ -2,7 +2,7 @@ const inputFile = document.querySelector("#file");
 const upload_btn = document.querySelector("#upload");
 const upload_popup = document.querySelector(".upload");
 const exit = document.querySelector("#exit");
-let preview_video = null;
+//let preview_video = null;
 let uploading = false;
 const makeDetailBox = () => {
   let div = ``;
@@ -45,6 +45,7 @@ const appendDetailBox = () => {
     const title = document.querySelector("#upload_title").value;
     const content = document.querySelector("#upload_content").value;
     const pub = document.querySelector("#upload_pub").value;
+    preview_video = document.querySelector(".preview_video");
     const url = preview_video.src;
     console.log(title, content, pub, url);
     const data = {
