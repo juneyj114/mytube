@@ -14,4 +14,8 @@ public interface SubscribingRepository extends JpaRepository<Subscribing, Long> 
 	
 	@Query(value = "SELECT * FROM subscribing WHERE subscribingId=?1", nativeQuery = true)
 	List<Subscribing> findAllSubscribingId(Long id);
+	
+	@Query(value = "SELECT * FROM subscribing WHERE subscriberId=?1 AND subscribingId=?2", nativeQuery = true)
+	Subscribing findBySubscriberIdAndSubscribingId(Long subscriberId, Long subscribingId);
+
 }

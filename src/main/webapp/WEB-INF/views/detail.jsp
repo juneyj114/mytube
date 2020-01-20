@@ -60,7 +60,14 @@
 							<div class="gray_font font_13">구독자
 								${video.author.subCount}명</div>
 						</div>
-						<button class="subscribe_btn">구독</button>
+						<c:choose>
+						<c:when test="${video.sub}">
+						<button class="subscribe_btn subing" author-id="${video.author.id}">구독중</button>
+						</c:when>
+						<c:otherwise>
+						<button class="subscribe_btn" author-id="${video.author.id}">구독</button>
+						</c:otherwise>
+						</c:choose>
 					</div>
 					<div>${video.content}</div>
 				</div>

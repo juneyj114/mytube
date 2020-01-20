@@ -1,15 +1,22 @@
 let isLogin = false;
+let sending = false;
 const login_check = document.querySelector("#login_check");
 if(login_check){
 	isLogin = true;
 }
 
 const sub_btn = document.querySelector(".subscribe_btn");
-
+const author_id = sub_btn.getAttribute("author-id");
 const fetchSub = async () => {
-      const fetchData = await fetch("/sub/${video.author.id}", { method: "post" });
+      const fetchData = await fetch(`/sub/${author_id}`, { method: "post" });
       const status = await fetchData.text();
-      console.log(status);
+      if(status === "SAVE"){
+    	  sub_btn.classList.add('subing');
+    	  sub_btn.innerText = "구독중"
+      } else {
+    	  sub_btn.classList.remove('subing');
+    	  sub_btn.innerText = "구독"
+      }
     };
 
 sub_btn.addEventListener("click", fetchSub);
@@ -52,7 +59,7 @@ const like_count = document.querySelector(".like_btn > div");
 const unlike_img = document.querySelector(".unlike_btn > img");
 const unlike_count = document.querySelector(".unlike_btn > div");
 const video_id = like_btn.getAttribute("video-id");
-let sending = false;
+
 
 like_btn.addEventListener("click", async () => {
 	if(!isLogin){

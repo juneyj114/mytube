@@ -17,20 +17,36 @@ public class SubscribingService {
 	private SubscribingRepository subRepository;
 	
 	@Transactional
-	public void save(Long subscriberId, Long subscribingId) {
-		Subscribing sub = new Subscribing();
-    	User subscriber = new User();
-    	User subscribing = new User();
-    	subscriber.setId(subscriberId);
-    	subscribing.setId(subscribingId);
-    	sub.setUser(subscriber);
-    	sub.setSubscribing(subscribing);
-    	subRepository.save(sub);
+	public String saveToggle(Long subscriberId, Long subscribingId) {
+		Subscribing savedSub = subRepository.findBySubscriberIdAndSubscribingId(subscriberId, subscribingId);
+		if(savedSub != null) {
+			subRepository.delete(savedSub);
+			return "DELETE";
+		} else {
+			Subscribing sub = new Subscribing();
+	    	User subscriber = new User();
+	    	User subscribing = new User();
+	    	subscriber.setId(subscriberId);
+	    	subscribing.setId(subscribingId);
+	    	sub.setUser(subscriber);
+	    	sub.setSubscribing(subscribing);
+	    	subRepository.save(sub);
+	    	return "SAVE";
+		}
 	}
 	
 	@Transactional
 	public List<Subscribing> findAllSubscribingId(Long id) {
 		List<Subscribing> subs = subRepository.findAllSubscribingId(id);
 		return subs;
+	}
+
+	@Transactional
+	public boolean existsBySubscriberIdAndSubscribingId(Long subscriberId, Long subscribingId) {
+		Subscribing sub = subRepository.findBySubscriberIdAndSubscribingId(subscriberId, subscribingId);
+		if(sub != null) {
+			return true;
+		}
+		return false;
 	}
 }

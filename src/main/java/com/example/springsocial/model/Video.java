@@ -77,6 +77,9 @@ public class Video {
 	@Transient
 	public LikeStatus like = LikeStatus.NOTHING;
 	
+	@Transient
+	public boolean sub = false;
+	
 	public boolean getIsPublic() {
 		return this.isPublic;
 	}

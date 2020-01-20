@@ -29,8 +29,7 @@ public class UserController {
     @Autowired
     private UserService userService;
     
-    @Autowired
-    private SubscribingService subService;
+
     
     @Transactional(readOnly = true)
     @GetMapping("/user")
@@ -40,11 +39,6 @@ public class UserController {
                 
     }
     
-    @PostMapping("/sub/{id}")
-    public String subscribe(@PathVariable Long id, @AuthenticationPrincipal UserPrincipal principal) {
-    	System.out.println("1");
-    	subService.save(principal.getId(), id);
-    	return "OK";
-    }
+
 
 }

@@ -104,6 +104,10 @@ public class IndexController {
 			User user = userService.findUserWithSubById(userPrincipal.getId());
 			model.addAttribute("user",user);
 		}
+		boolean existSub = subService.existsBySubscriberIdAndSubscribingId(userPrincipal.getId(), author.getId());
+		if(existSub) {
+			video.setSub(true);
+		}
 		model.addAttribute("video", video);
 	
 		videoService.readCountUp(id);
