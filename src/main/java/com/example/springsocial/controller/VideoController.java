@@ -92,5 +92,15 @@ public class VideoController {
 		List<Video> videos = videoService.findBySearchWord(searchWord);
 		return videos;
 	}
+	
+	@PostMapping("/video/delete/{id}")
+	public String delete(@PathVariable Long id) {
+		String res = videoService.delete(id);
+		if(res.equals("OK")) {
+			return "OK";
+		} else {
+			return "FAIL";
+		}
+	}
 
 }

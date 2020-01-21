@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -48,7 +49,7 @@ public class Video {
 	@Column(columnDefinition = "BIGINT DEFAULT 0")
 	public Long readCount;
 	
-	@OneToMany(mappedBy = "video", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "video", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
 	@JsonIgnoreProperties({"user","video"})
 	public List<Likes> likes = new ArrayList<Likes>();
 	

@@ -98,4 +98,10 @@ public class VideoService {
 		videos = convertTimeStamp.convertTimeStamp(videos);
 		return videos;
 	}
+	
+	@Transactional
+	public String delete(Long id) {
+		videoRepository.deleteById(id);
+		return "OK";
+	}
 }

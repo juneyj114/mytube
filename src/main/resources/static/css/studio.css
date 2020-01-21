@@ -222,6 +222,9 @@ body {
       .relative {
         position: relative;
       }
+      .absolute {
+      	position: absolute;
+      }
       .content_hidden {
         position: absolute;
         top: 20px;
@@ -235,6 +238,9 @@ body {
       }
       .preview_video {
         width: 100%;
+        max-width: inherit;
+        height: 100%;
+        max-height: inherit;
       }
       .detail_input {
         padding-left: 10px;
@@ -270,6 +276,7 @@ body {
       margin-top: 20px;
       display: flex;
       align-items: center;
+      justify-content: center;
   }
   .progress_bar {
       width:100%;
@@ -289,3 +296,30 @@ body {
       top:4px;
       left: 47%;
   }
+  #icon_change > img:first-child {
+  	margin-right:20px;
+  }
+  #btn_change {
+  	position: relative;
+  	display: flex;
+  }
+  .hide {
+  	display: none;
+  	opacity: 0;
+  }
+  #mod_btn {
+  	margin-top: 15px;
+  }
+  #mod_btn > img:first-child {
+	margin-right: 20px;
+}
+
+.delete_many{
+	margin: 10px 0;
+	opacity: 0;
+	transition:0.3s;
+	cursor: default;
+}
+.cursor {
+	cursor: pointer;
+}

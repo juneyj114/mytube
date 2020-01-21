@@ -63,9 +63,10 @@
     <section id="main">
       <div class="flex_col">
         <div class="big_text">채널 동영상</div>
+        <div class="delete_many">선택한 영상 삭제하기</div>
         <div class="grid-7-col explain">
           <div>
-            <input type="checkbox" />
+            <input type="checkbox" id="all_check"/>
           </div>
           <div>동영상</div>
           <div>공개 상태</div>
@@ -75,16 +76,23 @@
           <div class="just_self_end">좋아요</div>
         </div>
         
+        <form action="/video/delete/many" method="POST">
         <c:forEach items="${user.videos}" var="video">
-        <div class="grid-7-col contents_container">
+        <div class="grid-7-col contents_container" id="video_container" video-id="${video.id}">
           <div>
-            <input type="checkbox" />
+            <input type="checkbox" value="${video.id}" class="check"/>
           </div>
           <div class="flex_row preview_container">
             <video src="${video.url}" class="preview_img" ></video>
-            <div class="flex_col relative">
-              <div class="title">${video.title}</div>
-              <div class="content">${video.content}</div>
+            <div id="btn_change" >
+	            <div class="flex_col absolute" >
+	              <div class="title">${video.title}</div>
+	              <div class="content">${video.content}</div>
+	            </div>
+	            <div class="flex_row absolute hide" id="mod_btn">
+	            	<img src="/img/write.svg" class="small_icon write" video-id="${video.id}" >
+	            	<img src="/img/delete.svg" class="small_icon delete" video-id="${video.id}" >
+	            </div>
             </div>
           </div>
           <div>${video.isPublic? '공개' : '비공개'}</div>
@@ -94,7 +102,7 @@
           <div class="just_self_end">${video.likeCount}</div>
         </div>
         </c:forEach>
-        
+        </form>
         
         <div class="flex_row" id="paging">
           페이징
