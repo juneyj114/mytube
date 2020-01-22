@@ -7,7 +7,6 @@ let uploading = false;
 const makeDetailBox = () => {
   let div = ``;
   div += `	<div class="video_wrapper">`;
-  //  div += `		<video src="#" class="preview_video"></video>`;
   div += `		<div class="progress_bar">`;
   div += `			<div class="bar"></div>`;
   div += `			<div class="per">0%</div>`;
@@ -106,22 +105,6 @@ inputFile.addEventListener("change", e => {
   appendDetailBox();
   transFile(inputFile.files);
 });
-
-//axios 아닌 fetch 사용 (progressbar X)
-//const transFile = async files => {
-//  uploading = true;
-//  const formData = new FormData();
-//  formData.append("file", files[0]);
-//  const fetchData = await fetch("/video/upload", {
-//    method: "POST",
-//    body: formData
-//  });
-//  const res = await fetchData.text();
-//  console.log(res);
-//  preview_video = document.querySelector(".preview_video");
-//  preview_video.src = res;
-//  uploading = false;
-//};
 
 const transFile = async files => {
   uploading = true;
@@ -231,8 +214,52 @@ delete_many.addEventListener("click", e => {
       }
     });
     setTimeout(() => {
-    	location.href = "/studio";
-	}, 1000);
-    
+      location.href = "/studio";
+    }, 1000);
   }
 });
+const makeVideoCard = (video) => {
+	card = document.createElement("div");
+	card.classList.add("search_card");
+	div = ``;
+	div += `	<video src="${video.url}" class="search_video"></video>`;
+	div += `	<div class="flex_col" >`;
+	div += `		<div class="title">${video.title}</div>`;
+	div += `		<div class="content">${video.content}</div>`;
+	div += `	</div>`;
+	card.innerHTML = div;
+	return card;
+}
+const searchResult = document.querySelector(".search_result");
+const appendToResarch = (videos) => {
+	
+	let i = 0;
+	videos.forEach(video => {
+		videoCard = makeVideoCard(video);
+		searchResult.append(videoCard);
+		i += 1;
+		if(i >=5){
+			return;
+		}
+	});
+
+};
+
+const searchInput = document.querySelector(".search_input");
+searchInput.addEventListener(
+  "input",
+  _.debounce(e => {
+    const search = e.target.value;
+    const searchUrl = encodeURI(search);
+    if (search !== "") {
+      searchResult.classList.remove("hide");
+      fetch(`/studio/preview/${searchUrl}`, { method: "get" })
+      	.then(res => res.json())
+      	.then((videos) => {
+      		searchResult.innerHTML="";
+      		appendToResarch(videos)});
+    } else {
+      searchResult.classList.add("hide");
+    }
+  }, 300)
+);

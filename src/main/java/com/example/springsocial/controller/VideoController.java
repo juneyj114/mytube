@@ -87,8 +87,8 @@ public class VideoController {
 	}
 	
 	@GetMapping("/video/search")
-	public List<Video> search(@RequestParam("word") String searchWord) {
-		List<Video> videos = videoService.findBySearchWord(searchWord);
+	public List<Video> search(@RequestParam("word") String searchWord, Pageable pageable) {
+		List<Video> videos = videoService.findBySearchWord(searchWord, pageable);
 		return videos;
 	}
 	
@@ -100,6 +100,12 @@ public class VideoController {
 		} else {
 			return "FAIL";
 		}
+	}
+	
+	@GetMapping("/studio/preview/{searchWord}")
+	public List<Video> sSearchPreview(@PathVariable String searchWord, Pageable pageable) {
+		List<Video> videos = videoService.findBySearchWord(searchWord, pageable);
+		return videos;
 	}
 
 }

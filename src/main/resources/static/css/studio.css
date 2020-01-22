@@ -5,6 +5,10 @@ body {
   font-size: 15px;
   color: rgba(128, 128, 128, 0.8);
 }
+a {
+text-decoration: none;
+color: rgba(128, 128, 128, 0.8);
+}
 button {
   border: none;
 }
@@ -50,6 +54,7 @@ input:focus {
   margin-left: auto;
   border: 1px solid #aaaaaa96;
   border-radius: 5px;
+  position: relative;
 }
 .input {
   width: 100%;
@@ -97,6 +102,9 @@ input:focus {
 .nav_item_container {
   border-bottom: 2px solid hsla(0, 0%, 95%, 0.9);
   padding: 12px 0;
+}
+.nav_item_container div:hover {
+	background-color: #aaaaaa5e;
 }
 .left {
   justify-content: flex-start;
@@ -149,9 +157,11 @@ nav img {
 }
 .content {
   color: rgba(128, 128, 128, 0.8);
+  font-size: 13px;
 }
 .title {
   font-size: 13px;
+  color: black;
 }
 .preview_img {
   width: 120px;
@@ -322,4 +332,30 @@ cursor: default;
 }
 .cursor {
 cursor: pointer;
+}
+.search_result {
+height: 300px;
+width: 100%;
+position: absolute;
+top: 35px;
+background-color: white;
+display: flex;
+flex-direction: column;
+border: 1px solid #aaaaaa96;
+}
+.search_card {
+	height: 60px;
+	width: 100%;
+	box-sizing: border-box;
+	border-bottom: 1px solid #aaaaaa96;
+	padding: 5px 10px;
+	display: flex;
+	
+}
+.search_video {
+	height:100%;
+	margin-right: 10px;
+}
+.input_box > form {
+	margin-right:auto;
 }

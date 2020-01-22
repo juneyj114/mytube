@@ -52,14 +52,13 @@ public class IndexController {
 
 	@GetMapping("/studio")
 	public String studio(@AuthenticationPrincipal UserPrincipal userPrincipal, 
-						@PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
-						@RequestParam("page") int page,
+						@PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC, page = 0) Pageable pageable,
 						Model model) {
 		User user = userService.findUserWithSubById(userPrincipal.getId());
 		Page<Video> videos = videoService.findByAuthorId(user.getId(), pageable);
 		user.setVideos(videos.getContent());
 		model.addAttribute("isLast", videos.isLast());
-		model.addAttribute("currentPage", page);
+		model.addAttribute("currentPage", videos.getNumber());
 		model.addAttribute("lastPage", videos.getTotalPages()-1);
 
 		for (Video video : videos) {
@@ -77,7 +76,37 @@ public class IndexController {
 			}
 		}
 		model.addAttribute("user", user);
-		return "studio";
+		return "/studio";
+	}
+	
+	@GetMapping("/studio/search")
+	public String sSearch(@AuthenticationPrincipal UserPrincipal userPrincipal, 
+			@PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC, page = 0) Pageable pageable,
+			@RequestParam("search") String search,
+			Model model) {
+		User user = userService.findUserWithSubById(userPrincipal.getId());
+		Page<Video> videos = videoService.findByAuthorIdAndSearch(user.getId(), search, pageable);
+		user.setVideos(videos.getContent());
+		model.addAttribute("isLast", videos.isLast());
+		model.addAttribute("currentPage", videos.getNumber());
+		model.addAttribute("lastPage", videos.getTotalPages()-1);
+
+		for (Video video : videos) {
+			List<Likes> likes = likesService.findByVideoIdAndLike(video.getId());
+			video.setLikeCount(likes.size());
+			String title = video.getTitle();
+			String content = video.getContent();
+			if (title.length() > 13) {
+				title = title.substring(0, 14) + "...";
+				video.setTitle(title);
+			}
+			if (content.length() > 30) {
+				content = content.substring(0, 31) + "...";
+				video.setContent(content);
+			}
+		}
+		model.addAttribute("user", user);
+		return "/studio";
 	}
 
 	@GetMapping("/auth/login")

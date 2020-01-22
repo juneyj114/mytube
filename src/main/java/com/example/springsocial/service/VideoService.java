@@ -47,7 +47,7 @@ public class VideoService {
 
 	@Transactional
 	public List<Video> loadMainVideo(Pageable pageable) {
-		List<Video> videos = videoRepository.findAll(pageable).getContent();
+		List<Video> videos = videoRepository.findByIsPublicTrue(pageable).getContent();
 		videos = convertTimeStamp.convertTimeStamp(videos);
 		return videos;
 	}
@@ -88,14 +88,14 @@ public class VideoService {
 	}
 	
 	@Transactional
-	public List<Video> findBySearchWord(String searchWord) {
+	public List<Video> findBySearchWord(String searchWord, Pageable pageable) {
 		// (?=(.*단어.*){1,})
 		String regexp = "";
 		String[] splitWords = searchWord.split("\\s+");
 		for (int i = 0; i < splitWords.length; i++) {
 			regexp += "(?=(.*"+splitWords[i]+".*){1,})";
 		} 
-		List<Video> videos = videoRepository.findBySearchWord(regexp);
+		List<Video> videos = videoRepository.findBySearchWord(regexp, pageable).getContent();
 		videos = convertTimeStamp.convertTimeStamp(videos);
 		return videos;
 	}
@@ -107,5 +107,13 @@ public class VideoService {
 		File file = new File("src/main/resources"+url);
 		videoRepository.deleteById(id);
 		return "OK";
+	}
+
+	public Page<Video> findByAuthorIdAndSearch(Long id, String search, Pageable pageable) {
+
+		String regexp = "(?=(.*"+search+".*){1,})";
+		Page<Video> videos = videoRepository.findBySearchWord(regexp, pageable);
+//		convertTimeStamp.convertTimeStamp(videos.getContent());
+		return videos;
 	}
 }

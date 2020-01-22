@@ -20,5 +20,7 @@ public interface VideoRepository extends JpaRepository<Video, Long> {
 	Page<Video> findByAuthorId(Long id, Pageable pageable);
 	
 	@Query(value = "select * from video where concat(title,content) regexp ?", nativeQuery = true)
-	List<Video> findBySearchWord(String regexp);
+	Page<Video> findBySearchWord(String regexp, Pageable pageable);
+
+	Page<Video> findByIsPublicTrue(Pageable pageable);
 }

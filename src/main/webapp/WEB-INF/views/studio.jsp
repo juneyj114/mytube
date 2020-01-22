@@ -29,10 +29,14 @@
     </div>
     <!-- 업로드 팝업창 끝 -->
     <header class="flex_row" id="header">
-	  <a href="/"><img src="/img/yt_studio_logo.svg" class="studio_logo" /></a>
+	  <a href="/studio"><img src="/img/yt_studio_logo.svg" class="studio_logo" /></a>
       <div class="input_box flex_row">
         <img src="/img/glass.svg" class="small_icon glass" />
-        <input type="text" placeholder="채널에서 검색하기" class="input" />
+        <form action="/studio/search" method="get">
+        	<input name="search" type="text" placeholder="채널에서 검색하기" class="input search_input" />
+        </form>
+        <div class="search_result hide">
+        </div>
       </div>
       <div class="flex_row header_btns">
         <div class="flex_row" id="upload">
@@ -49,14 +53,24 @@
           class="big_avatar align_self_center"
           id="nav_avatar"
         />
-        <div class="flex_row left nav_item">
-          <img src="/img/dashboard.svg" />
-          <span>대시보드</span>
-        </div>
-        <div class="flex_row left nav_item">
-          <img src="/img/movie.svg" />
-          <span>동영상</span>
-        </div>
+        <a href="/">
+	        <div class="flex_row left nav_item">
+	          <img src="/img/home.svg" />
+	          <span>홈</span>
+	        </div>
+        </a>
+        <a href="/studio/dashboard">
+	        <div class="flex_row left nav_item">
+	          <img src="/img/dashboard.svg" />
+	          <span>대시보드</span>
+	        </div>
+        </a>
+        <a href="/studio">
+	        <div class="flex_row left nav_item">
+	          <img src="/img/movie.svg" />
+	          <span>동영상</span>
+	        </div>
+        </a>
       </div>
     </nav>
     <section id="main">
@@ -112,6 +126,7 @@
       </div>
     </section>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/underscore-min.js"></script>
     <script src="/js/studio.js"></script>
 
   </body>
