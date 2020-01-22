@@ -64,7 +64,6 @@ public class VideoController {
 	
 	@PostMapping("/video/uploadDetail")
 	public String uploadDetail(@RequestBody VideoSaveRequestDto dto) throws UnsupportedEncodingException {
-		System.out.println(dto.isPub());
 		String url = dto.getUrl();
 		url = URLDecoder.decode(url, "UTF-8");
 		int startIndex = url.indexOf("upload")-1;

@@ -2,6 +2,8 @@ package com.example.springsocial.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,7 +17,7 @@ public interface VideoRepository extends JpaRepository<Video, Long> {
 
 	Video findByUrl(String url);
 
-	List<Video> findByAuthorId(Long id);
+	Page<Video> findByAuthorId(Long id, Pageable pageable);
 	
 	@Query(value = "select * from video where concat(title,content) regexp ?", nativeQuery = true)
 	List<Video> findBySearchWord(String regexp);

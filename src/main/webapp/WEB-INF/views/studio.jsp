@@ -29,8 +29,7 @@
     </div>
     <!-- 업로드 팝업창 끝 -->
     <header class="flex_row" id="header">
-      <img src="/img/hamberger.svg" class="small_icon" />
-      <img src="/img/yt_studio_logo.svg" class="studio_logo" />
+	  <a href="/"><img src="/img/yt_studio_logo.svg" class="studio_logo" /></a>
       <div class="input_box flex_row">
         <img src="/img/glass.svg" class="small_icon glass" />
         <input type="text" placeholder="채널에서 검색하기" class="input" />
@@ -105,7 +104,10 @@
         </form>
         
         <div class="flex_row" id="paging">
-          페이징
+          <a href="/studio?page=0"><img src="/img/first.svg" class="middle_avatar"/></a>
+          <a href="/studio?page=${currentPage eq 0 ? 0 : currentPage-1}"><img src="/img/left.svg" class="middle_avatar"/></a>
+          <a href="/studio?page=${isLast ? currentPage : currentPage+1}"><img src="/img/right.svg" class="middle_avatar"/></a>
+          <a href="/studio?page=${lastPage}"><img src="/img/last.svg" class="middle_avatar"/></a>
         </div>
       </div>
     </section>

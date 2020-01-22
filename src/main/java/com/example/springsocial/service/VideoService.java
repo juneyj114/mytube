@@ -1,5 +1,6 @@
 package com.example.springsocial.service;
 
+import java.io.File;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -74,8 +75,8 @@ public class VideoService {
 	}
 	
 	@Transactional
-	public List<Video> findByAuthorId(Long id){
-		List<Video> videos = videoRepository.findByAuthorId(id);
+	public Page<Video> findByAuthorId(Long id, Pageable pageable){
+		Page<Video> videos = videoRepository.findByAuthorId(id, pageable);
 		return videos;
 	}
 	
@@ -101,6 +102,9 @@ public class VideoService {
 	
 	@Transactional
 	public String delete(Long id) {
+		Video video = videoRepository.findById(id).get();
+		String url = video.getUrl();
+		File file = new File("src/main/resources"+url);
 		videoRepository.deleteById(id);
 		return "OK";
 	}

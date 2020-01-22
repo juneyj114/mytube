@@ -92,10 +92,10 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
     private User updateExistingUser(User existingUser, OAuth2UserInfo oAuth2UserInfo) throws Exception {
         existingUser.setUsername(oAuth2UserInfo.getUsername());
         existingUser.setAvatar(oAuth2UserInfo.getImageUrl());
-        if(existingUser.getProvider().name() == "google") {
-        	String url = upload.uploadAvatar(existingUser.getAvatar(), existingUser.getId());
-        	existingUser.setAvatar(url);
-        }
+//        if(existingUser.getProvider().name() == "google") {
+//        	String url = upload.uploadAvatar(existingUser.getAvatar(), existingUser.getId());
+//        	existingUser.setAvatar(url);
+//        }
         return userRepository.save(existingUser);
     }
 
