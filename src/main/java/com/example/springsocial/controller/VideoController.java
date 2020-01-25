@@ -107,5 +107,11 @@ public class VideoController {
 		List<Video> videos = videoService.findBySearchWord(searchWord, pageable);
 		return videos;
 	}
+	
+	@GetMapping("/video/detail/{id}")
+	public Video detail(@PathVariable Long id) throws Exception {
+		Video video = videoService.findById(id);
+		return video;
+	}
 
 }

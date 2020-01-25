@@ -28,13 +28,19 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Data
 @Table(name = "users", uniqueConstraints = {
         @UniqueConstraint(columnNames = "email")
@@ -76,6 +82,10 @@ public class User {
     @OneToMany(mappedBy = "user")
     @JsonManagedReference
     private List<Subscribing> subscribing = new ArrayList<Subscribing>();
+    
+    @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties("user")
+    private List<PlayList> playList = new ArrayList<>();
     
     @CreationTimestamp
     private Timestamp createDate;

@@ -20,6 +20,27 @@
 		<div class="title big_text">최신 동영상</div>
 		<div class="grid-col-4" id="main_video"></div>
 	</section>
+	<section id="mini_player" >
+		<div class="player_view" style="border-bottom: 1px solid">
+			<video src="/mv/testVideo.mp4" class="player_video" controls></video>
+			<div class="curtain">
+				<img src="/img/exitw.svg" class="small_avatar close_player" />
+			</div>
+		</div>
+		<div class="player_detail" >
+			<div>
+				<div class="player_title">제목</div>
+				<span>재생목록</span>
+				<span class="player_count"></span>
+				<span>/</span>
+				<span class="player_total_count"></span>
+			</div>
+			<img src="img/up.svg" class="small_avatar more" onclick="more()"/>
+		</div>
+		<div class="player_list" >
+		</div>
+	</section>
 	<script src="/js/main.js"></script>
+	<script src="/js/mplayer.js"></script>
 </body>
 </html>

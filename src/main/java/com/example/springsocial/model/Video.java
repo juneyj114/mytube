@@ -23,9 +23,11 @@ import com.example.springsocial.util.LikeStatus;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -53,11 +55,9 @@ public class Video {
 	@JsonIgnoreProperties({"user","video"})
 	public List<Likes> likes = new ArrayList<Likes>();
 	
-	// TODO public List<Comment> comments;
-	
 	@ManyToOne
 	@JoinColumn(name = "authorId")
-	@JsonIgnoreProperties({"videos", "subscribing"})
+	@JsonIgnoreProperties({"videos", "subscribing", "playList"})
 	public User author;
 	
 	@CreationTimestamp
