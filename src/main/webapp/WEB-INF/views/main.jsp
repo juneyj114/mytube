@@ -40,7 +40,7 @@
 		<div class="player_list" >
 		</div>
 	</section>
-	<script src="/js/main.js"></script>
+	<script src="/js/main2.js"></script>
 	<script src="/js/mplayer.js"></script>
 </body>
 </html>

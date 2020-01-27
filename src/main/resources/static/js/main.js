@@ -14,15 +14,15 @@ $(window).scroll(async function() {
 
 const miniInit = async () => {
 	document.querySelector(".player_list").innerHTML="";
-	const miniVideos = await loadMiniVideo();
-	  miniVideos.forEach(ele => {
+	const miniVideos = await loadMiniVideo(); // 미니플레이어에 들어갈 영상들을 요청합니다.
+	  miniVideos.forEach(ele => { // for문을 통해 영상 각각을 append합니다.
 		 const video = ele.video;
 		 const {author} = ele.video;
 		 const miniVideo = makeMiniVideo(video, author);
 		 appendMiniVideoToPlayer(miniVideo);
 		 registerDelete(miniVideo);
 	  });
-	  if(localStorage.getItem("currentList") === null){
+	  if(localStorage.getItem("currentList") === null){ // 최근 리스트가 존재하지 않으면 제일 최상단의 영상으로 초기화합니다.
 		  localStorage.setItem("currentList", miniVideos[0].video.id);	  
 	  }
 	  const currentList = localStorage.getItem("currentList");
