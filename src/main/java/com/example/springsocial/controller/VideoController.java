@@ -17,6 +17,7 @@ import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
@@ -89,7 +90,8 @@ public class VideoController {
 	}
 	
 	@GetMapping("/video/search")
-	public List<Video> search(@RequestParam("word") String searchWord, Pageable pageable) {
+	public List<Video> search(@RequestParam("word") String searchWord,
+			@PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC, page = 0) Pageable pageable) {
 		List<Video> videos = videoService.findBySearchWord(searchWord, pageable);
 		return videos;
 	}

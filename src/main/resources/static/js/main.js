@@ -1,3 +1,5 @@
+// 이 페이지는 더 이상 사용되지 않습니다. main2.js를 참조하세요.
+
 let page = 0;
 let isMain = true;
 
