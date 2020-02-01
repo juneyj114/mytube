@@ -46,7 +46,7 @@ public class Video {
 	@Column(length = 500)
 	public String url;
 	
-	public Boolean isPublic;
+	public Boolean isPublic = false;
 	
 	@Column(columnDefinition = "BIGINT DEFAULT 0")
 	public Long readCount;

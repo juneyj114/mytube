@@ -162,6 +162,7 @@ nav img {
 .title {
   font-size: 13px;
   color: black;
+  width:350px;
 }
 .preview_img {
   width: 120px;
@@ -262,6 +263,7 @@ nav img {
 
 .detail_title {
   height: 30px;
+  margin-top: 20px;
 }
 
 .detail_content {

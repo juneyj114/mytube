@@ -130,6 +130,8 @@ svg {
 }
 .big_card_img {
   width: 100%;
+  max-width: 365px;
+  max-height: 200px;
   margin-bottom: 15px;
 }
 .middle_avatar {

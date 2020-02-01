@@ -58,6 +58,8 @@ public class VideoController {
 		User user = new User();
 		user.setId(principal.getId());
 		video.setAuthor(user);
+		video.setTitle("작성중입니다...");
+		video.setIsPublic(false);
 		videoService.save(video);
 		return video.getUrl();
 	}

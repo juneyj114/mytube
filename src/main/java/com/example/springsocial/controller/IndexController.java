@@ -66,11 +66,11 @@ public class IndexController {
 			video.setLikeCount(likes.size());
 			String title = video.getTitle();
 			String content = video.getContent();
-			if (title.length() > 13) {
+			if (title != null && title.length() > 13) {
 				title = title.substring(0, 14) + "...";
 				video.setTitle(title);
 			}
-			if (content.length() > 30) {
+			if (content != null && content.length() > 30) {
 				content = content.substring(0, 31) + "...";
 				video.setContent(content);
 			}
