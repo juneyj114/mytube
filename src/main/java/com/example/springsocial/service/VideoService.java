@@ -8,14 +8,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.springsocial.model.Likes;
+import com.example.springsocial.model.PubMsg;
+import com.example.springsocial.model.Subscribing;
 import com.example.springsocial.model.User;
 import com.example.springsocial.model.Video;
 import com.example.springsocial.model.dto.VideoSaveRequestDto;
 import com.example.springsocial.repository.LikesRepository;
+import com.example.springsocial.repository.SubscribingRepository;
 import com.example.springsocial.repository.VideoRepository;
 import com.example.springsocial.util.ConvertTimeStamp;
 
@@ -30,6 +34,12 @@ public class VideoService {
 	
 	@Autowired
 	private ConvertTimeStamp convertTimeStamp;
+	
+	@Autowired
+	private SubscribingRepository subscribingRepository;
+	
+	@Autowired
+	private SimpMessagingTemplate simpMessagingTemplate;
 	
 	@Transactional
 	public void upload(Long id) {
@@ -65,6 +75,7 @@ public class VideoService {
 		video.setTitle(dto.getTitle());
 		video.setContent(dto.getContent());
 		video.setIsPublic(dto.isPub());
+		sendMessage(video);
 		return video;
 	}
 
@@ -108,12 +119,26 @@ public class VideoService {
 		videoRepository.deleteById(id);
 		return "OK";
 	}
-
+	
+	@Transactional
 	public Page<Video> findByAuthorIdAndSearch(Long id, String search, Pageable pageable) {
-
 		String regexp = "(?=(.*"+search+".*){1,})";
 		Page<Video> videos = videoRepository.findBySearchWord(regexp, pageable);
 //		convertTimeStamp.convertTimeStamp(videos.getContent());
 		return videos;
+	}
+	
+	@Transactional
+	public void sendMessage(Video video) {
+		List<Subscribing> subs = subscribingRepository.findBySubscribingId(video.getAuthor().getId());
+		video = convertTimeStamp.convertTimeStampOne(video);
+		for (Subscribing sub : subs) {
+			Long userId = sub.getUser().getId();
+			PubMsg pubMsg = new PubMsg();
+			pubMsg.setUsername(video.getAuthor().getUsername());
+			pubMsg.setTitle(video.getTitle());
+			pubMsg.setCreateDate(video.getDate());
+			simpMessagingTemplate.convertAndSend("/topic/"+userId, pubMsg);
+		}
 	}
 }

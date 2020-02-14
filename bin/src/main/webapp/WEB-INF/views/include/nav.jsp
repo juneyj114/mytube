@@ -44,7 +44,7 @@
 		<div class="nav_item nav_text gray_font">구독</div>
 		<c:forEach items="${user.subscribing}" var="sub">
 			<div class="flex_row left nav_item">
-				<img src="/img/avatar/bom.jpg" class="small_avatar" /> <span>${sub.subscribing.username}</span>
+				<img src="${user.avatar}" class="small_avatar" /> <span>${sub.subscribing.username}</span>
 			</div>
 		</c:forEach>
 	</div>

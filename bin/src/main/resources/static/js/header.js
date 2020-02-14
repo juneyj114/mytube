@@ -7,9 +7,23 @@ search_form.addEventListener("submit", async e => {
   search_input.value = "";
   encodeURI(searchWord);
   if(searchWord.replace(/\s/g, "") !== ""){
-	window.location.href = `/video/search?word=${searchWord}`;  
+	const res = await fetch(`/video/search?word=${searchWord}`);
+	const videos = await res.json();
+	appendVideos(videos);
+	history.pushState({data:'a'}, '', '/search');
   };
-  });
+});
+
+const appendVideos = videos => {
+	const mainVideo = document.querySelector("#main_video");
+	mainVideo.innerHTML = "";
+	videos.forEach(video => {
+	  const card = makeCard(video);
+	  addMouseEventToCard(card);
+	  setAddingToMiniPlayerBtn(card, video);
+	  mainVideo.append(card);
+	});
+};
 
 let spreading = false;
 

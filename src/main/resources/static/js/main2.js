@@ -372,3 +372,8 @@ const init = async () => {
 };
 
 init();
+
+const play_list = document.querySelector('#play_list');
+play_list.addEventListener("click", () => {
+	showMiniPlayer();
+})

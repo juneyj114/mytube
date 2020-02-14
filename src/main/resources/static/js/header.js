@@ -1,5 +1,6 @@
 const search_form = document.querySelector(".search_form");
 const search_input = document.querySelector(".search_input");
+
 search_form.addEventListener("submit", async e => {
   e.preventDefault();
   const searchWord = search_input.value;
@@ -37,5 +38,5 @@ icon.addEventListener("click", () => {
 		my_account.style.display = "none";
 		spreading = false;
 	}
-
 });
+

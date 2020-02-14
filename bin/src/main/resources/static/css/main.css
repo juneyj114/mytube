@@ -130,6 +130,8 @@ svg {
 }
 .big_card_img {
   width: 100%;
+  max-width: 365px;
+  max-height: 200px;
   margin-bottom: 15px;
 }
 .middle_avatar {
@@ -200,6 +202,7 @@ svg {
 	border: none;
 	background-color: #cc0000;
 	color: white;
+	cursor:pointer;
 }
 
 .present_video {
@@ -227,6 +230,7 @@ svg {
 .video_wrapper {
 	width:100%;
 	height:100%;
+	position: relative;
 }
 .avatar_wrapper {
 	cursor: pointer;
@@ -280,3 +284,134 @@ svg {
   margin-right: 10px;
 }
 
+.like_btns {
+	display: flex;
+	flex-directiron: row;
+	margin-left:auto;
+}
+.like_btn {
+	margin-right:20px;
+}
+.like_btn, .unlike_btn{
+	display: flex;
+	cursor: pointer;
+}
+.like_btn > img, .unlike_btn > img {
+	margin-right:10px;
+}
+.subing {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+#mini_player {
+	width:400px;
+	height:600px;
+	display: none;
+	grid-template-rows: 230px 65px 305px;
+	z-index: 100;
+	position: fixed;
+	bottom: -305px;
+	right: 20px;
+	box-sizing: border-box;
+	transition: 0.5s;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+	color: #6d6d6d;
+}
+.player_detail {
+	width: inherit;
+	display: grid;
+	grid-template-columns: 10fr 1fr;
+	padding: 15px 20px;
+	box-sizing: inherit;
+	background-color: white;
+	
+}
+.player_view {
+	width: inherit;
+	background-color: black;
+	display: grid;
+	align-content: center;
+	position: relative;
+}
+.player_video {
+	width: inherit;
+}
+.player_list {
+	background-color: #f9f9f9;
+	overflow: auto;
+}
+.list_mv_container {
+	height: inherit;
+	margin-right:10px;
+}
+.list_mv {
+	height: inherit;
+	max-width: 100%;
+}
+.player_list_detail {
+	height: 80px;
+	display: grid;
+	grid-template-columns: 1fr 5fr 10fr 1fr;
+	padding: 5px;
+	padding-right: 15px;
+	cursor: pointer;
+	border-bottom: 1px solid #cac6c6;
+}
+.player_list_detail:hover {
+	box-shadow: 0 3px 6px 3px rgba(0, 0, 0, 0.2);
+}
+.more {
+	justify-self: center;
+	align-self: center;
+	cursor: pointer;
+}
+.extend {
+	bottom: 0px !important;
+}
+.play_check {
+	align-self: center;
+}
+.remove_list_detail {
+	align-self: center;
+	display: none;
+}
+.player_title {
+	color: black;
+	
+}
+.playList_save {
+	display: none;
+	align-items: center;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	background-color: black;
+	
+}
+.playList_save > span {
+	color: white;
+	padding-left: 5px;
+	width: 100%;
+	display: none;
+	font-size: 12px;
+	
+}
+.player_list_info {
+	display: grid;
+	grid-template-rows: 2fr 1fr;
+}
+.curtain {
+	width:100%;
+	height: 30px;
+	background-color: #cacaca;
+	position: absolute;
+	top:0px;
+	left:0px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	display: none;
+}
+.curtain > img {
+	margin-right: 10px;
+	cursor: pointer;
+}

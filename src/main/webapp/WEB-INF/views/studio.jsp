@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -109,7 +110,9 @@
             </div>
           </div>
           <div>${video.isPublic? '공개' : '비공개'}</div>
-          <div>${video.createDate}</div>
+          <div>
+          <fmt:formatDate pattern="yy.MM.dd hh:mm" value="${video.createDate}" />
+          </div>
           <div class="just_self_end">${video.readCount}</div>
           <div class="just_self_end">미작성</div>
           <div class="just_self_end">${video.likeCount}</div>

@@ -29,11 +29,14 @@
     </div>
     <!-- 업로드 팝업창 끝 -->
     <header class="flex_row" id="header">
-      <img src="/img/hamberger.svg" class="small_icon" />
-      <img src="/img/yt_studio_logo.svg" class="studio_logo" />
+	  <a href="/studio"><img src="/img/yt_studio_logo.svg" class="studio_logo" /></a>
       <div class="input_box flex_row">
         <img src="/img/glass.svg" class="small_icon glass" />
-        <input type="text" placeholder="채널에서 검색하기" class="input" />
+        <form action="/studio/search" method="get">
+        	<input name="search" type="text" placeholder="채널에서 검색하기" class="input search_input" />
+        </form>
+        <div class="search_result hide">
+        </div>
       </div>
       <div class="flex_row header_btns">
         <div class="flex_row" id="upload">
@@ -50,22 +53,33 @@
           class="big_avatar align_self_center"
           id="nav_avatar"
         />
-        <div class="flex_row left nav_item">
-          <img src="/img/dashboard.svg" />
-          <span>대시보드</span>
-        </div>
-        <div class="flex_row left nav_item">
-          <img src="/img/movie.svg" />
-          <span>동영상</span>
-        </div>
+        <a href="/">
+	        <div class="flex_row left nav_item">
+	          <img src="/img/home.svg" />
+	          <span>홈</span>
+	        </div>
+        </a>
+        <a href="/studio/dashboard">
+	        <div class="flex_row left nav_item">
+	          <img src="/img/dashboard.svg" />
+	          <span>대시보드</span>
+	        </div>
+        </a>
+        <a href="/studio">
+	        <div class="flex_row left nav_item">
+	          <img src="/img/movie.svg" />
+	          <span>동영상</span>
+	        </div>
+        </a>
       </div>
     </nav>
     <section id="main">
       <div class="flex_col">
         <div class="big_text">채널 동영상</div>
+        <div class="delete_many">선택한 영상 삭제하기</div>
         <div class="grid-7-col explain">
           <div>
-            <input type="checkbox" />
+            <input type="checkbox" id="all_check"/>
           </div>
           <div>동영상</div>
           <div>공개 상태</div>
@@ -75,16 +89,23 @@
           <div class="just_self_end">좋아요</div>
         </div>
         
+        <form action="/video/delete/many" method="POST">
         <c:forEach items="${user.videos}" var="video">
-        <div class="grid-7-col contents_container">
+        <div class="grid-7-col contents_container" id="video_container" video-id="${video.id}">
           <div>
-            <input type="checkbox" />
+            <input type="checkbox" value="${video.id}" class="check"/>
           </div>
           <div class="flex_row preview_container">
             <video src="${video.url}" class="preview_img" ></video>
-            <div class="flex_col relative">
-              <div class="title">${video.title}</div>
-              <div class="content">${video.content}</div>
+            <div id="btn_change" >
+	            <div class="flex_col absolute" >
+	              <div class="title">${video.title}</div>
+	              <div class="content">${video.content}</div>
+	            </div>
+	            <div class="flex_row absolute hide" id="mod_btn">
+	            	<img src="/img/write.svg" class="small_icon write" video-id="${video.id}" >
+	            	<img src="/img/delete.svg" class="small_icon delete" video-id="${video.id}" >
+	            </div>
             </div>
           </div>
           <div>${video.isPublic? '공개' : '비공개'}</div>
@@ -94,13 +115,19 @@
           <div class="just_self_end">${video.likeCount}</div>
         </div>
         </c:forEach>
-        
+        </form>
         
         <div class="flex_row" id="paging">
-          페이징
+          <a href="/studio?page=0"><img src="/img/first.svg" class="middle_avatar"/></a>
+          <a href="/studio?page=${currentPage eq 0 ? 0 : currentPage-1}"><img src="/img/left.svg" class="middle_avatar"/></a>
+          <a href="/studio?page=${isLast ? currentPage : currentPage+1}"><img src="/img/right.svg" class="middle_avatar"/></a>
+          <a href="/studio?page=${lastPage}"><img src="/img/last.svg" class="middle_avatar"/></a>
         </div>
       </div>
     </section>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/underscore-min.js"></script>
     <script src="/js/studio.js"></script>
+
   </body>
 </html>

@@ -29,7 +29,7 @@
 		<c:choose>
 			<c:when test="${user.id >= 1}">
 				
-					<div class="avatar_wrapper">
+					<div class="avatar_wrapper" id="login_check">
 						<img src="${user.avatar}" class="middle_avatar" />
 					</div>
 				

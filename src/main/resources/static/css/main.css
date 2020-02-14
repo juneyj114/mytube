@@ -71,6 +71,7 @@ svg {
 .header_btns {
   margin-left: auto;
   margin-right: 36px;
+  position: relative;
 }
 #login {
   border: 1px solid #065fd4;
@@ -413,5 +414,61 @@ svg {
 }
 .curtain > img {
 	margin-right: 10px;
+	cursor: pointer;
+}
+.notifyIcon {
+	margin-right: 10px;
+	cursor:pointer;
+}
+
+.notify_number_back {
+	position: absolute; 
+	background-color: red; 
+	width: 15px; 
+	height: 15px; 
+	border-radius: 100%; 
+	left:13px; 
+	top:4px; 
+	color: white;
+}
+
+.notify_number {
+	position: absolute; 
+	top: -2px; 
+	left: 4px; 
+	font-size: 13px;	
+}
+
+.notify_container {
+	position: absolute; 
+	left: -280px; 
+	top:40px; 
+	background-color: white; 
+	width: 300px; 
+	height: 400px; 
+	display: none; 
+	grid-auto-rows: 80px;
+	box-shadow: 0px 0px 7px -3px;
+	overflow: auto;
+}
+
+.notify_card {
+	border-bottom: 1px solid #dcdada; 
+	display: grid; 
+	grid-template-columns: 3fr 8fr; 
+	padding: 10px 10px 10px 0;
+}
+
+.notify_img {
+	width: 40px; 
+	justify-self: center;
+}
+
+.notify_time {
+	margin-top: 5px; 
+	color: #606060;
+}
+
+#play_list {
 	cursor: pointer;
 }
