@@ -11,5 +11,6 @@ public class PubMsg {
 	
 	private String username;
 	private String title;
+	private String avatar;
 	private String createDate;
 }

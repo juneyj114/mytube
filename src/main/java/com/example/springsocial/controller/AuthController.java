@@ -44,7 +44,7 @@ public class AuthController {
     }
     
     @PostMapping("/signupProc")
-    public @ResponseBody ResponseEntity<?> registerUser(User user) {
+    public String registerUser(User user) {
         if(userRepository.existsByEmail(user.getEmail())) {
             throw new BadRequestException("Email address already in use.");
         }
@@ -60,8 +60,7 @@ public class AuthController {
                 .fromCurrentContextPath().path("/user/me")
                 .buildAndExpand(result.getId()).toUri();
 
-        return ResponseEntity.created(location)
-                .body(new ApiResponse(true, "User registered successfully@"));
+        return "/auth/loginForm";
     }
 
 }

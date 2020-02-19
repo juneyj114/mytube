@@ -137,6 +137,7 @@ public class VideoService {
 			PubMsg pubMsg = new PubMsg();
 			pubMsg.setUsername(video.getAuthor().getUsername());
 			pubMsg.setTitle(video.getTitle());
+			pubMsg.setAvatar(video.getAuthor().getAvatar());
 			pubMsg.setCreateDate(video.getDate());
 			simpMessagingTemplate.convertAndSend("/topic/"+userId, pubMsg);
 		}

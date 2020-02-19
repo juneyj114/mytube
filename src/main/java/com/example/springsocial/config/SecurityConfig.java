@@ -67,7 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.formLogin()
 		.loginPage("/auth/signin")
 		.loginProcessingUrl("/auth/loginProcess")
-		.defaultSuccessUrl("/user", true)
+		.defaultSuccessUrl("/", true)
 		.usernameParameter("email")  // 추가
 		.and()
 		.oauth2Login()

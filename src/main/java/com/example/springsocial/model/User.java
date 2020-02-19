@@ -59,7 +59,7 @@ public class User {
     @Column(nullable = false)
     private String email;
 
-    private String avatar;
+    private String avatar = "/img/anomy.png";
 
     @Column(nullable = false)
     private Boolean emailVerified = false;

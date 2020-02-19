@@ -70,7 +70,7 @@
 			<div class="flex_col infos">
 				<div>${user.username}</div>
 				<div>${user.email}</div>
-				<a href="#"><div class="avatar_link">프로필사진 수정</div c></a>
+				<!-- <a href="#"><div class="avatar_link">프로필사진 수정</div c></a> -->
 			</div>
 		</div>
 		<div class="setting">
@@ -80,7 +80,7 @@
 			<div class="flex_row left info_set">
 				<img src="/img/studio.svg" class="info_svg" /> <span>스튜디오</span>
 			</div>
-			<div class="flex_row left info_set">
+			<div class="flex_row left info_set" onclick="goHome()">
 				<img src="/img/logout.svg" class="info_svg" /> <span>로그아웃</span>
 			</div>
 		</div>
@@ -95,7 +95,7 @@
 		let notifyCard = document.createElement("div");
         notifyCard.classList.add("notify_card")
 		let card = "";
-		card += "	<img src='/img/anomy.png' class='notify_img' />";
+		card += "	<img src='"+body.avatar+"' class='notify_img' />";
 		card += "	<div>";
 		card += " 	<div>"+body.username+"에서 업로드한 동영상: "+body.title+"</div>";
 		card += "		<div class='notify_time' >"+body.createDate+"</div>";
@@ -135,6 +135,8 @@
           
           });
 
-      
+    const goHome = () => {
+		window.location.href="/logout";
+        };  
     </script>
 <script src="/js/header.js"></script>

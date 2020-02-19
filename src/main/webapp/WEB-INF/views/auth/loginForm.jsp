@@ -14,20 +14,22 @@
       <div class="login_text center">
         로그인
       </div>
-      <div class="input_container">
-        <input type="email" name="" class="login_input" />
-        <div class="placeholder">이메일</div>
-        <div><a href="#">이메일을 잊으셨나요?</a></div>
-      </div>
-      <div class="input_container">
-        <input type="password" name="" class="login_input" />
-        <div class="placeholder">비밀번호</div>
-        <div><a href="#">비밀번호를 잊으셨나요?</a></div>
-      </div>
-      <div class="bottom_btns">
-        <div><a href="#">계정만들기</a></div>
-        <button class="login_btn">로그인</button>
-      </div>
+      <form method="post" action="/auth/loginProcess">
+	      <div class="input_container">
+	        <input type="email" name="email" class="login_input" />
+	        <div class="placeholder">이메일</div>
+	        <div><a href="#">이메일을 잊으셨나요?</a></div>
+	      </div>
+	      <div class="input_container">
+	        <input type="password" name="password" class="login_input" />
+	        <div class="placeholder">비밀번호</div>
+	        <div><a href="#">비밀번호를 잊으셨나요?</a></div>
+	      </div>
+	      <div class="bottom_btns">
+	        <div><a href="/auth/signup">계정만들기</a></div>
+	        <button type="submit" class="login_btn">로그인</button>
+	      </div>
+      </form>
       <div class="hr"></div>
       <img
         src="/img/google.png"

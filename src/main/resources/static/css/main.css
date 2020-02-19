@@ -447,7 +447,7 @@ svg {
 	width: 300px; 
 	height: 400px; 
 	display: none; 
-	grid-auto-rows: 80px;
+	grid-auto-rows: 100px;
 	box-shadow: 0px 0px 7px -3px;
 	overflow: auto;
 }
